@@ -68,9 +68,20 @@ npm run dev
 # 仅打包
 npm run package
 
-# 打包并生成安装程序
+# 打包并生成安装程序（包含 NSIS 安装包，支持自定义安装路径）
 npm run make
 ```
+
+生成的安装包将位于 `out/make` 目录下。
+
+### NSIS 安装包特性
+
+- **文件名**：`ElectronTabContainers Setup 1.0.0.exe`
+- **自定义安装**：运行安装程序时，取消勾选“一键安装”或直接按照向导操作，可以选择安装目标文件夹。
+- **Per-Machine 安装**：默认建议安装到 Program Files，但允许用户修改。
+
+**注意**：旧的 Squirrel 安装包（`ElectronTabContainers-1.0.0 Setup.exe`）已被移除，请使用上述 NSIS 安装包以获得更好的安装体验。
+
 
 ## 📝 核心实现细节
 

@@ -4,13 +4,13 @@ const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 module.exports = {
   packagerConfig: {
     asar: true,
-    name: 'ElectronTabContainers',
+    name: 'GoFlowMain',
     icon: './icon',
   },
   rebuildConfig: {},
   makers: [
     {
-      name: '@electron-forge/maker-squirrel',
+      name: '@electron-addons/electron-forge-maker-nsis',
       config: {},
     },
     {
