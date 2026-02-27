@@ -8,7 +8,7 @@ export let mainWindow: BrowserWindow
 
 export function createWindow() {
   const win = new BrowserWindow({
-    width: 1200,
+    width: 1650,
     height: 800,
     autoHideMenuBar: true,
     webPreferences: {
