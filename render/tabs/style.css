@@ -7,20 +7,25 @@
       cantarell, 'Helvetica Neue', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
       'Segoe UI Symbol';
   --tab-font-size: 12px;
-  --tab-color: var(--text-color-tertiary, #7f8792);
+  --tab-color: var(--text-color-tertiary, #ffffff);
   --tab-background: var(--color-gray-200, #f1f2f4);
   --tab-transition: background-color 200ms ease-out, color 200ms ease-out;
   --tab-cursor: pointer; /* 设置鼠标指针为手型 */
   --tab-active-color: var(--text-color-primary, #222529);
   --tab-active-background: var(--background-color-primary-regular, #fff);
-  --tab-hover-color: var(--text-color-tertiary, #7f8792);
+  --tab-hover-color: var(--text-color-tertiary, #222529);
   --tab-hover-background: var(--color-gray-200, #f1f2f4);
   --button-color: var(--modal-header-close-color-regular, #9da3ac);
   --button-hover-color: var(--modal-header-close-color-regular, #9da3ac);
   --button-cursor: pointer;
   --badge-background: #383a3e;
   --badge-color: #fff;
-  --close-button-visibility: hi;
+  --close-button-visibility: hidden;
+  --button-background: transparent;
+  --button-hover-background: rgba(0, 0, 0, 0.08);
+  --button-border-radius: 4px;
+  --button-font-size: 14px;
+  --tab-border-color: rgba(0, 0, 0, 0.08);
 }
 
 /* STYLES */
@@ -36,8 +41,8 @@
 .nav {
   display: none;
   width: 100%;
-  height: 32px;
-  margin-top: 8px;
+  height: 40px;
+  margin-top: 0;
   cursor: default;
 }
 
@@ -127,7 +132,7 @@
 
 .tab:not(.active):hover {
   color: var(--tab-hover-color);
-  background: var(tab-hover-background);
+  background: var(--tab-hover-background);
 }
 
 .tab-badge {
@@ -165,7 +170,7 @@
 }
 
 .tab-icon.background {
-  background-image: url(../assets/link_normal_icon.png);
+  background-image: url(../assets/link_normal_selected_icon.png);
 }
 
 .tab-icon.loading {
@@ -221,21 +226,26 @@
   visibility: var(--close-button-visibility);
 }
 
-.tab.active .tab-close button {
+.tab.active .tab-close button,
+.tab:hover .tab-close button {
   display: inline-block;
   visibility: visible;
 }
 
 .tab-close button:hover,
 .tab-close button:active {
-  color: var(--button-hover-color);
-  background: var(--button-hover-background);
+  color: #e81123;
+  background: rgba(232, 17, 35, 0.1);
+  transform: scale(1.1);
+  transition: all 150ms ease;
 }
 
 .buttons {
   display: flex;
+  align-items: center;
   padding: 5px;
-  border-left: 1px solid var(--tab-border-color);
+  /* border-left: 1px solid var(--tab-border-color); */
+  -webkit-app-region: no-drag;
 }
 
 
@@ -254,6 +264,7 @@
   text-align: center;
   line-height: 1;
   padding: 1px 0 0 0;
+  -webkit-app-region: no-drag;
 }
 
 .buttons button:hover {

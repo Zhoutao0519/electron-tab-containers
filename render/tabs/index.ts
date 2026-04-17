@@ -386,6 +386,9 @@ class Tab extends EventTarget {
       if (e.which === 1) {
         if ((e.target as HTMLElement).matches('button')) return
         this.activate()
+      } else if (e.which === 2) {
+        // 鼠标中键点击关闭标签
+        this.close(false, false)
       }
     }
     this.element?.addEventListener('mousedown', tabMouseDownHandler.bind(this), false)

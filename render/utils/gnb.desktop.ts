@@ -38,6 +38,27 @@ export async function createTabOnWindow(url: string): Promise<any> {
 }
 
 /**
+ * 最小化当前窗口
+ */
+export async function minimizeWindow(): Promise<any> {
+  window.$gnb.$desktop({ type: 'minimizeWindow' })
+}
+
+/**
+ * 切换当前窗口全屏状态
+ */
+export async function toggleFullscreenWindow(): Promise<any> {
+  window.$gnb.$desktop({ type: 'toggleFullscreenWindow' })
+}
+
+/**
+ * 关闭当前窗口
+ */
+export async function closeWindow(): Promise<any> {
+  window.$gnb.$desktop({ type: 'closeWindow' })
+}
+
+/**
  * 「监听」创建 Tab
  */
 export function onCreateTab(source: any, callback: (id: number) => void): any {

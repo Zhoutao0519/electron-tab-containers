@@ -285,7 +285,7 @@ export class GDTabPageContainer {
       x: 0,
       y: subPageTabHeight,
       width: this.window.getBounds().width || 1024,
-      height: (this.window.getBounds().height || 768) - subPageTabHeight - 40,
+      height: (this.window.getBounds().height || 768) - subPageTabHeight,
     })
   }
 }

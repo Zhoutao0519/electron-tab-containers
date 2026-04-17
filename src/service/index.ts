@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import { IpcMainEvent, ipcMain } from 'electron'
+import { BrowserWindow, IpcMainEvent, ipcMain } from 'electron'
 import { GDTabPageContainer } from '../pages'
 
 export class DesktopService {
@@ -43,9 +43,32 @@ const createTabOnWindow = (_: IpcMainEvent, { url = '' }) => {
   GDTabPageContainer.shared.createTab(url)
 }
 
+const getWindowFromEvent = (event: IpcMainEvent): BrowserWindow | null => {
+  return BrowserWindow.fromWebContents(event.sender)
+}
+
+const minimizeWindow = (event: IpcMainEvent) => {
+  const window = getWindowFromEvent(event)
+  window?.minimize()
+}
+
+const toggleFullscreenWindow = (event: IpcMainEvent) => {
+  const window = getWindowFromEvent(event)
+  if (!window) return
+  window.setFullScreen(!window.isFullScreen())
+}
+
+const closeWindow = (event: IpcMainEvent) => {
+  const window = getWindowFromEvent(event)
+  window?.close()
+}
+
 const functionMap: any = {
   closeTabOnTabPage: closeTabOnTabPage,
   frameDidReadyOnTabPage: frameDidReadyOnTabPage,
   switchTabOnWindow: switchTabOnWindow,
   createTabOnWindow: createTabOnWindow,
+  minimizeWindow: minimizeWindow,
+  toggleFullscreenWindow: toggleFullscreenWindow,
+  closeWindow: closeWindow,
 }

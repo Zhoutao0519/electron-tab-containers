@@ -2,14 +2,17 @@ import { Tab, TabGroup } from './tabs'
 import './tabs'
 import { GNBEventManager } from './utils/event-manager'
 import {
+  closeWindow,
   closeTabOnTabPage,
   createTabOnWindow,
   frameDidReadyOnTabPage,
+  minimizeWindow,
   onCloseTab,
   onCreateTab,
   onSwitchTab,
   onTabTitle,
   switchTabOnWindow,
+  toggleFullscreenWindow,
 } from './utils/gnb.desktop'
 
 GNBEventManager.shared.register()
@@ -78,3 +81,28 @@ tabGroup.on('click-add-button', () => {
 })
 
 createTabOnWindow(url)
+
+const bindWindowControls = () => {
+  const controls = document.querySelector('.window-controls')
+  if (!controls) return
+
+  controls.addEventListener('click', (event) => {
+    const target = event.target as HTMLElement | null
+    const action = target?.closest('[data-window-action]')?.getAttribute('data-window-action')
+    if (!action) return
+
+    if (action === 'minimize') {
+      minimizeWindow()
+      return
+    }
+    if (action === 'fullscreen') {
+      toggleFullscreenWindow()
+      return
+    }
+    if (action === 'close') {
+      closeWindow()
+    }
+  })
+}
+
+bindWindowControls()

@@ -10,7 +10,9 @@ export function createWindow() {
   const win = new BrowserWindow({
     width: 1650,
     height: 800,
+    frame: false,
     autoHideMenuBar: true,
+    title: '',
     webPreferences: {
       preload: getPreloadPath(),
     },
