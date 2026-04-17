@@ -16,16 +16,16 @@
   --tab-hover-color: var(--text-color-tertiary, #222529);
   --tab-hover-background: var(--color-gray-200, #f1f2f4);
   --button-color: var(--modal-header-close-color-regular, #9da3ac);
-  --button-hover-color: var(--modal-header-close-color-regular, #9da3ac);
+  --button-hover-color: var(--modal-header-close-color-regular, #000000);
   --button-cursor: pointer;
   --badge-background: #383a3e;
   --badge-color: #fff;
   --close-button-visibility: hidden;
   --button-background: transparent;
-  --button-hover-background: rgba(0, 0, 0, 0.08);
+  --button-hover-background: rgba(255, 255, 255);
   --button-border-radius: 4px;
   --button-font-size: 14px;
-  --tab-border-color: rgba(0, 0, 0, 0.08);
+  --tab-border-color: rgba(255, 255, 255);
 }
 
 /* STYLES */
@@ -122,7 +122,7 @@
   right: 0;
   width: 1px;
   height: 16px;
-  background: rgba(0, 0, 0, 0.08);
+  background: var(--tab-border-color);
   content: '';
 }
 
@@ -244,7 +244,6 @@
   display: flex;
   align-items: center;
   padding: 5px;
-  /* border-left: 1px solid var(--tab-border-color); */
   -webkit-app-region: no-drag;
 }
 
